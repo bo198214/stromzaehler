@@ -1,0 +1,1 @@
+0 * * * * /home/stromzaehler/stromzaehler-send-values.sh >> /home/stromzaehler/send.log 2>&1
