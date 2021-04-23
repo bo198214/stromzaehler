@@ -48,6 +48,20 @@ function read_180_280() {
 
   let METER_180=0x${METER_OUTPUT:310:10}
   let METER_280=0x${METER_OUTPUT:358:10}
+  if [ $METER_180 -eq $METER_280 ]
+  then
+    echo $METER_OUTPUT 1>&2
+    return 1
+  fi
+
+  #example wrong values:
+  #558368955986
+  #352243286016
+  if [ $METER_180 -ge 100000000000 ] || [ $METER_280 -ge 100000000000 ]
+  then
+    echo $METER_OUTPUT 1>&2
+    return 1
+  fi
   echo $METER_180 $METER_280
 }
 

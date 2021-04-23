@@ -4,6 +4,10 @@ date +"%Y-%m-%d %H:%M:%S"
 source $HOME/ed300l-lib.sh
 
 a_b=$(read_180_280)
+if [ $? -ne 0 ]
+then
+  exit 1
+fi
 METER_180=${a_b% *}
 METER_280=${a_b#* }
 if [[ $METER_180 =~ ^[0-9]+$ ]]
