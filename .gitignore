@@ -1,0 +1,6 @@
+.*
+!/.gitignore
+/sh-init
+/match.sh
+/send.log
+/sma-send.log
