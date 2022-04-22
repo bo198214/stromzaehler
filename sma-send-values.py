@@ -38,12 +38,12 @@ def send(idx,value):
   print(r.url,r.status_code)
   return r.status_code
 
-send(144,total_yield_Wh)
-send(145,temperature_C)
-send(146,dc_amperage_1)
-send(147,dc_voltage_1)
-send(148,dc_amperage_2)
-send(149,dc_voltage_2)
+#send(144,total_yield_Wh)
+#send(145,temperature_C)
+#send(146,dc_amperage_1)
+#send(147,dc_voltage_1)
+#send(148,dc_amperage_2)
+#send(149,dc_voltage_2)
 
 def send_influx(table,idx,name,value):
   url="http://192.168.178.101:8086/write?db=domoticz"
@@ -52,6 +52,10 @@ def send_influx(table,idx,name,value):
   print(r.url,data,r.status_code)
   return r.status_code
 
-#Because Domoticz by some reason does not send these values
 send_influx("Current",146,"SMA1-A",dc_amperage_1)
 send_influx("Current",148,"SMA2-A",dc_amperage_2)
+send_influx("Counter",144,"SMA-Wh",total_yield_Wh)
+send_influx("Temperature",145,"SMA-C",temperature_C)
+send_influx("Voltage",147,"SMA1-V",dc_voltage_1)
+send_influx("Voltage",149,"SMA2-V",dc_voltage_2)
+
